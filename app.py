@@ -130,8 +130,8 @@ def add_paid_user(new_user_id):
     )
     return resp.json()
 
-FREE_MODEL = "deepseek-r1-distill-llama-70b"
-PAID_MODEL = "deepseek-r1-distill-llama-70b"
+FREE_MODEL = "llama-3.3-70b-versatile"
+PAID_MODEL = "llama-3.3-70b-versatile"
 
 def get_model(user_id):
     return PAID_MODEL if user_id in PAID_USER_IDS else FREE_MODEL
