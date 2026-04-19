@@ -132,6 +132,7 @@ def add_paid_user(new_user_id):
 
 FREE_MODEL = "llama-3.3-70b-versatile"
 PAID_MODEL = "llama-3.3-70b-versatile"
+VISION_MODEL = "meta-llama/llama-4-scout-17b-16e-instruct"
 
 def get_model(user_id):
     return PAID_MODEL if user_id in PAID_USER_IDS else FREE_MODEL
@@ -373,7 +374,7 @@ def handle_image(event):
         image_data = b"".join(chunk for chunk in message_content.iter_content())
         image_base64 = base64.b64encode(image_data).decode("utf-8")
 
-        response = call_ai(model, [
+        response = call_ai(VISION_MODEL, [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": [
                 {"type": "text", "text": "請看這張圖片中的自然科題目並解題。"},
